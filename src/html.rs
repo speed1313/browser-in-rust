@@ -152,11 +152,11 @@ mod tests {
     use crate::dom::{elem, text};
     use std::collections::HashMap;
     #[test]
-    fn test0(){
-        assert_eq!(1,1);
+    fn test0() {
+        assert_eq!(1, 1);
     }
     #[test]
-    fn test1() {
+    fn test_parse_multiple_tags() {
         let source = String::from(
             r#"
 <html>
@@ -167,19 +167,17 @@ mod tests {
         let expected = elem(
             String::from("html"),
             HashMap::new(),
-            vec![
-                elem(
-                    String::from("h1"),
-                    HashMap::new(),
-                    vec![text(String::from("hello"))],
-                ),
-            ],
+            vec![elem(
+                String::from("h1"),
+                HashMap::new(),
+                vec![text(String::from("hello"))],
+            )],
         );
 
         assert_eq!(expected, parse(source));
     }
     #[test]
-    fn test2() {
+    fn test_parse_attribute() {
         let source = String::from(
             r#"
 <html>

@@ -7,14 +7,6 @@
 ### Part 2: HTML
 - parse HTML text and create DOM Tree
 
-:::info
-Rust's string is UTF-8, so we should use char_indices() to advance self.pos to the next character
-:::
-
-
-### Part 3: CSS
-
-
 ### HTML BNF (this browser's original)
 nodes -> (node S*)*
 node -> element | text
@@ -36,6 +28,24 @@ attribute_inner_value -> (alphabet | digit)+
 alphabet = 'a'..'z' | 'A'..'Z'
 digit = '0'..'9'
 S -> " " | "\n"
+
+:::info
+Rust's string is UTF-8, so we should use char_indices() to advance self.pos to the next character
+:::
+
+
+### Part 3: CSS
+- parse CSS text and create List Structure Stylesheet
+
+Stylesheet
+    - Rule1
+        - tag: p
+        - color: #cccccc
+    - Rule2
+        - tag: p, class: "name"
+        - color: #ff0000
+
+
 
 
 
