@@ -3,10 +3,11 @@ pub struct Stylesheet {
     pub rules: Vec<Rule>,
 }
 
+
 #[derive(Debug, PartialEq)]
 pub struct Rule {
     pub selectors: Vec<Selector>,
-    declarations: Vec<Declaration>,
+    pub declarations: Vec<Declaration>,
 }
 
 #[derive(Debug, PartialEq)]
@@ -16,18 +17,18 @@ pub enum Selector {
 
 #[derive(Debug, PartialEq)]
 pub struct SimpleSelector {
-    tag_name: Option<String>,
-    id: Option<String>,
-    class: Vec<String>,
+    pub tag_name: Option<String>,
+    pub id: Option<String>,
+    pub class: Vec<String>,
 }
 
 #[derive(Debug, PartialEq)]
 pub struct Declaration {
-    name: String,
-    value: Value,
+    pub name: String,
+    pub value: Value,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq,Clone)]
 pub enum Value {
     Keyword(String),
     Length(f32, Unit),
@@ -35,7 +36,7 @@ pub enum Value {
     // insert more values here
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq,Clone)]
 pub enum Unit {
     Px,
     //insert more units here
@@ -43,10 +44,10 @@ pub enum Unit {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Color {
-    r: u8,
-    g: u8,
-    b: u8,
-    a: u8,
+    pub r: u8,
+    pub g: u8,
+    pub b: u8,
+    pub a: u8,
 }
 
 pub type Specificity = (usize, usize, usize);

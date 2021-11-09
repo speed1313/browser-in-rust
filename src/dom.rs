@@ -5,10 +5,10 @@ pub type AttrMap = HashMap<String, String>;
 #[derive(Debug, PartialEq)]
 pub struct Node {
     // data common to all nodes:
-    children: Vec<Node>,
+    pub children: Vec<Node>,
 
     // data specific to each node type:
-    node_type: NodeType,
+    pub node_type: NodeType,
 }
 
 #[derive(Debug, PartialEq)]
@@ -56,3 +56,4 @@ impl ElementData {
         }
     }
 }
+
