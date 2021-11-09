@@ -96,7 +96,31 @@ StyledNode
     - specified_values: PropertyMap, map from css property names to values
     - children: vector of StyledNode
 
+### Part 5,6: Boxes and Block layout
+- layout takes the style tree and translates it into a bunch of rectangles in a 2-demensional space
+-
+#### The Box Model
+> Layout is all about boxes. A box is a rectangular section of a web page. It has a width, a height, and a position on the page. This rectangle is called the content area because it's where the box's content is drawn. The content may be text, image, video, or other boxes. <br><br>
+A box may also have padding, borders, and margins surrounding its content area. The CSS spec has a diagram showing how all these layers fit together.
+>> quote from [robinson](https://limpet.net/mbrubeck/2014/09/08/toy-layout-engine-5-boxes.html)
 
+Box has various type.
+Block boxes are placed vertically within their container from top to bottom
+Inline boxes are placed horizontally within their container from left to right
 
 ## ToDo
-- [ ] add unit test
+- HTML
+  -
+- CSS
+  - add various values
+- Style
+  - cascade system
+  - initial and/or computed values
+  - inheritance
+  - the style attribute
+
+
+
+## Ref
+[robinson source code](https://github.com/mbrubeck/robinson)
+[dackdive's blog](https://dackdive.hateblo.jp/entry/2021/02/23/113522)

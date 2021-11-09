@@ -20,6 +20,33 @@ pub enum Display{
     None,
 }
 
+impl<'a> StyledNode<'a> {
+    /// Return the specified value of a property if it exists, otherwise `None`
+    pub fn value(&self, name: &str) -> Option<Value> {
+        self.specified_values.get(name).cloned()
+    }
+
+    /// Return the specified value of property `name, or property `fallback_name` if that
+    /// doesn't exist, or value `defalut` if neither does
+    pub fn lookup(&self, name: &str, fallback_name: &str, defalut: &Value)->Value{
+        self.value(name).unwrap_or_else(|| self.value(fallback_name)
+                        .unwrap_or_else(|| default.clone()))
+    }
+
+    /// The value of the `display property (defaults to inline)
+    pub fn display(&self)->Display{
+        match self.value("diplay"){
+            Some(value::Keyword(s))=> match &*s{
+                "block" => Display::Block,
+                "none" => Display::None,
+                _ => Display::Inline
+            },
+            _ => Display::Inline
+        }
+    }
+}
+
+
 /// Apply a stylesheet to an entire DOM tree, returning a StyledNode tree.
 ///
 /// This finds only the specified values at the moment. Eventually it should be extended to find the
