@@ -9,8 +9,8 @@ type PropertyMap = HashMap<String, Value>;
 #[derive(Debug, PartialEq)]
 pub struct StyledNode<'a> {
     node: &'a Node,// pointer to a DOM node
-    specified_values: PropertyMap,
-    children: Vec<StyledNode<'a>>,
+    pub specified_values: PropertyMap,
+    pub children: Vec<StyledNode<'a>>,
 }
 
 #[derive(PartialEq)]
@@ -28,15 +28,15 @@ impl<'a> StyledNode<'a> {
 
     /// Return the specified value of property `name, or property `fallback_name` if that
     /// doesn't exist, or value `defalut` if neither does
-    pub fn lookup(&self, name: &str, fallback_name: &str, defalut: &Value)->Value{
+    pub fn lookup(&self, name: &str, fallback_name: &str, default: &Value)->Value{
         self.value(name).unwrap_or_else(|| self.value(fallback_name)
                         .unwrap_or_else(|| default.clone()))
     }
 
     /// The value of the `display property (defaults to inline)
     pub fn display(&self)->Display{
-        match self.value("diplay"){
-            Some(value::Keyword(s))=> match &*s{
+        match self.value("display"){
+            Some(Value::Keyword(s))=> match &*s{
                 "block" => Display::Block,
                 "none" => Display::None,
                 _ => Display::Inline

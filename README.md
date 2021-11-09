@@ -104,10 +104,17 @@ StyledNode
 A box may also have padding, borders, and margins surrounding its content area. The CSS spec has a diagram showing how all these layers fit together.
 >> quote from [robinson](https://limpet.net/mbrubeck/2014/09/08/toy-layout-engine-5-boxes.html)
 
-Box has various type.
-Block boxes are placed vertically within their container from top to bottom
-Inline boxes are placed horizontally within their container from left to right
 
+- LayoutBox
+  - Dimensions
+  - BoxType
+    - BlockNode(StyledNode)
+    - InlineNode(StyledNode)
+    - Anonymous
+  - children(Vec<LayoutBox>)
+
+##### note
+- parent can calculate width first, but can't calculate height before children.
 ## ToDo
 - HTML
   -
