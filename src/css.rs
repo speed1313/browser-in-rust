@@ -3,7 +3,6 @@ pub struct Stylesheet {
     pub rules: Vec<Rule>,
 }
 
-
 #[derive(Debug, PartialEq)]
 pub struct Rule {
     pub selectors: Vec<Selector>,
@@ -28,7 +27,7 @@ pub struct Declaration {
     pub value: Value,
 }
 
-#[derive(Debug, PartialEq,Clone)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Value {
     Keyword(String),
     Length(f32, Unit),
@@ -36,7 +35,7 @@ pub enum Value {
     // insert more values here
 }
 
-#[derive(Debug, PartialEq,Clone)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Unit {
     Px,
     //insert more units here

@@ -115,6 +115,13 @@ A box may also have padding, borders, and margins surrounding its content area. 
 
 ##### note
 - parent can calculate width first, but can't calculate height before children.
+
+### Part 7: Painting
+- Painting takes the tree of boxes from the layout module and turns them into an array of pixels.
+- this process is known as "rasterization"
+- this module only use rectangles to paint.
+- display list is a vector of DisplayCommands
+- 
 ## ToDo
 - HTML
   -
