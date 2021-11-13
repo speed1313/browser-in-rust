@@ -34,7 +34,7 @@ fn main() {
     };
 
     // Read input files:
-    let html = read_source(str_arg("h", "examples/perf-rainbow.html"));
+    let html = read_source(str_arg("h", "examples/perf-rainbow.html"));  
     let css = read_source(str_arg("c", "examples/perf-rainbow.css"));
 
     //Since we dont have an actual window, hard-code the "viewport" size

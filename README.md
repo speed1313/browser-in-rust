@@ -1,5 +1,18 @@
 # Web browser in Rust
 
+## How to use
+```
+$ git clone https://github.com/speed1313/browser-in-rust
+$ ./target/debug/browser-in-rust --html [HTML PATH] --css [CSS PATH] --format [png/pdf]
+$ ./target/debug/browser-in-rust --html examples/perf-rainbow.html --css examples/perf-rainbow.css  -f png
+$ ls
+~
+output.png
+~
+```
+![image](output.png)output.png
+
+
 ## How to build a web browser in rust
 ### Part 1: DOM
 - set DOM Tree node's data structure
@@ -31,7 +44,7 @@ digit = '0'..'9'
 S -> " " | "\n"
 ```
 
-:white_check_mark:
+:memo:
 Rust's string is UTF-8, so we should use char_indices() to  advance self.pos to the next character
 
 ### Part 3: CSS
@@ -67,7 +80,7 @@ div.note {
             - name: "padding", value: Length(10.0,"px")
 
 
-:white_check_mark:
+:memo:
 RGBA, A is opacity(透明度) for a color
 : implementation point
 ```rust:style.rs
@@ -121,7 +134,10 @@ A box may also have padding, borders, and margins surrounding its content area. 
 - this process is known as "rasterization"
 - this module only use rectangles to paint.
 - display list is a vector of DisplayCommands
-- 
+
+
+### Pretty Pictures
+- implement main.rs
 ## ToDo
 - HTML
   -
@@ -137,4 +153,5 @@ A box may also have padding, borders, and margins surrounding its content area. 
 
 ## Ref
 [robinson source code](https://github.com/mbrubeck/robinson)
+
 [dackdive's blog](https://dackdive.hateblo.jp/entry/2021/02/23/113522)
