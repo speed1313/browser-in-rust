@@ -46,6 +46,16 @@ pub enum BoxType<'a> {
     AnonymousBlock,
 }
 
+/// Transform a style tree into a layout tree
+pub fn layout_tree<'a>(node: &'a StyledNode<'a>, mut containing_block: Dimensions)-> LayoutBox<'a>{
+    //The layout algorithm expects the container height to start at 0
+    // TODO Save the initial containing block height, for calculating precent height
+    containing_block.content.height = 0.0;
+
+    let mut root_box = build_layout_tree(node);
+    root_box.layout(containing_block);
+    root_box
+}
 /// Build the tree of LayoutBoxes, but don't perform any layout calculations yet
 fn build_layout_tree<'a>(style_node: &'a StyledNode<'a>) -> LayoutBox<'a> {
     let mut root = LayoutBox::new(match style_node.display() {
